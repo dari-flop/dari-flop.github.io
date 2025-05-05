@@ -1,100 +1,90 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>Ucapan Selamat Ulang Tahun</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    max-height: 600px;
-    max-width: 350px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-    font-family: 'Pacifico', cursive, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  h1 {
-    font-size: 2.8rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  }
-  p {
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
-  }
-  button {
-    background: rgba(255,255,255,0.3);
-    border: none;
-    padding: 12px 25px;
-    border-radius: 40px;
-    font-size: 1rem;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    transition: background 0.3s ease;
-  }
-  button:hover {
-    background: rgba(255,255,255,0.5);
-  }
-  @media (max-width: 350px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+
     h1 {
-      font-size: 2rem;
+      margin-top: 20vh;
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 2px 2px 8px #000;
     }
+
     p {
-      font-size: 1rem;
+      color: #fff;
+      font-size: 1.5em;
+      margin-top: 20px;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 0.9rem;
+
+    .flowers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
     }
-  }
-</style>
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-5vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    iframe {
+      margin-top: 30px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
-  <h1>Selamat Ulang Tahun!</h1>
-  <p>Semoga hari ini membawa banyak kebahagiaan dan keceriaan untukmu.</p>
-  <button id="toggleMusicBtn">Putar Musik Ulang Tahun 🎵</button>
+  <h1>🎉 Selamat Ulang Tahun! 🎂</h1>
+  <p>Semoga panjang umur, sehat selalu, dan bahagia! 💖</p>
 
-  <audio id="birthdayAudio" loop>
-    <source src="song.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
+  <!-- Video YouTube -->
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/COWCz6VhTaU" title="Mahalini - Ini Laguku" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<script>
-  const audio = document.getElementById('birthdayAudio');
-  const btn = document.getElementById('toggleMusicBtn');
-  let isPlaying = false;
+  <!-- Background bunga -->
+  <div class="flowers" id="flowers"></div>
 
-  btn.addEventListener('click', () => {
-    if (!isPlaying) {
-      audio.play().then(() => {
-        isPlaying = true;
-        btn.textContent = "Hentikan Musik 🎵";
-      }).catch((e) => {
-        alert("Tidak bisa memutar musik secara otomatis, silakan klik tombol lagi.");
-      });
-    } else {
-      audio.pause();
-      isPlaying = false;
-      btn.textContent = "Putar Musik Ulang Tahun 🎵";
+  <script>
+    // Animasi bunga jatuh
+    const flowerColors = ['🌸', '🌷', '🌼', '💐', '🌺'];
+    const container = document.getElementById('flowers');
+
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.textContent = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+      flower.style.position = 'absolute';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.fontSize = Math.random() * 24 + 24 + 'px';
+      flower.style.animation = `fall ${Math.random() * 5 + 5}s linear infinite`;
+      container.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 10000);
     }
-  });
 
-  // Optional: preload audio for better UX
-  audio.preload = "auto";
-</script>
+    setInterval(createFlower, 300);
+  </script>
 </body>
 </html>
