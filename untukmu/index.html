@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      overflow: hidden;
+    }
 
+    h1 {
+      margin-top: 20vh;
+      font-size: 3em;
+      color: #fff;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    p {
+      color: #fff;
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+
+    .flowers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-5vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Selamat Ulang Tahun! 🎂</h1>
+  <p>Semoga panjang umur, sehat selalu, dan bahagia! 💖</p>
+
+  <!-- Background bunga -->
+  <div class="flowers" id="flowers"></div>
+
+  <!-- Lagu -->
+  <audio id="birthdaySong" autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
+    Lagu tidak dapat diputar di browser ini.
+  </audio>
+
+  <script>
+    // Animasi bunga jatuh
+    const flowerColors = ['🌸', '🌷', '🌼', '💐', '🌺'];
+    const container = document.getElementById('flowers');
+
+    function createFlower() {
+      const flower = document.createElement('div');
+      flower.textContent = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+      flower.style.position = 'absolute';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.fontSize = Math.random() * 24 + 24 + 'px';
+      flower.style.animation = `fall ${Math.random() * 5 + 5}s linear infinite`;
+      container.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 10000);
+    }
+
+    setInterval(createFlower, 300);
+  </script>
+</body>
+</html>
