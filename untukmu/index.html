@@ -46,38 +46,18 @@
         opacity: 0;
       }
     }
-
-    button {
-      margin-top: 30px;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 10px;
-      background-color: #ffffffcc;
-      color: #d6336c;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #fff;
-      transform: scale(1.05);
-    }
   </style>
 </head>
 <body>
   <h1>🎉 Selamat Ulang Tahun! 🎂</h1>
   <p>Semoga panjang umur, sehat selalu, dan bahagia! 💖</p>
 
-  <button onclick="document.getElementById('birthdaySong').play()">🎵 Putar Lagu</button>
-
   <!-- Background bunga -->
   <div class="flowers" id="flowers"></div>
 
   <!-- Lagu -->
-  <audio id="birthdaySong" loop>
-    <source src="../song.mp3" type="audio/mpeg">
+  <audio id="birthdaySong" autoplay loop>
+    <source src="song.mp3" type="audio/mpeg">
     Lagu tidak dapat diputar di browser ini.
   </audio>
 
